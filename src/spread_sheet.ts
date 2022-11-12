@@ -17,17 +17,18 @@ function getSheet(sheetName: string): GoogleAppsScript.Spreadsheet.Sheet {
 function insertOrUpdate(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   data: string[],
-  startColumn: number = 1
+  startColumn: number = 1,
+  dateColumn: number = 1
 ) {
   const date: string = data[0];
-  let row = findRow(sheet, date);
+  let row = findRow(sheet, date, dateColumn);
   if (row > 0) {
     // 行が見つかったら更新
     sheet.getRange(row, startColumn, 1, data.length).setValues([data]);
   } else {
     // 行が見つからなかったら新しくデータを挿入
-    const lastRaw = findLastRow(sheet, startColumn);
-    insert(sheet, data, lastRaw, startColumn);
+    const lastRow = findLastRow(sheet, startColumn);
+    insert(sheet, data, lastRow + 1, startColumn);
   }
 }
 
@@ -44,15 +45,19 @@ function insert(
 // 日付比較を行い、データがあれば行番号を返す
 function findRow(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
-  targetDate: string
+  targetDate: string,
+  dateColumn: number
 ): number {
+  const lastRow = findLastRow(sheet, dateColumn);
   const searchDate = formatDate(new Date(targetDate));
-  const allValues = sheet.getDataRange().getValues();
-
-  for (let index = allValues.length - 1; index > 0; index--) {
-    const valueDate = formatDate(new Date(allValues[index][0]));
+  // 1行目はタイトルのため2行目から比較
+  for (let row = 2; row < lastRow + 1; row++) {
+    // シートから日付を取得
+    const dateString = sheet.getRange(row, dateColumn).getValue();
+    const valueDate = formatDate(new Date(dateString));
+    // 同日であるか比較
     if (valueDate == searchDate) {
-      return index + 1;
+      return row;
     }
   }
   return 0;
@@ -63,6 +68,8 @@ function findLastRow(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   targetColumn: number
 ): number {
+  // 2行目が空白の場合,最終行番号がシートの最下番号を取ってしまうので早期リターンさせる
+  if (sheet.getRange(2, targetColumn).isBlank()) return 1;
   return sheet
     .getRange(1, targetColumn)
     .getNextDataCell(SpreadsheetApp.Direction.DOWN)
