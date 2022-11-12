@@ -16,3 +16,4 @@ const TYPE_Reel = "Reel";
  */
 
 // シート名
+const PAGE_POST_INSIGHT = "投稿Insight";
