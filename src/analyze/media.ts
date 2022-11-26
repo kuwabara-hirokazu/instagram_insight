@@ -22,6 +22,9 @@ function analyzeMedia() {
   }
 }
 
+/**
+ * ApiDoc https://developers.facebook.com/docs/instagram-api/reference/ig-media
+ */
 function getMediaList(pageLimit: number): Media[] {
   const param = `?fields=media.limit(${pageLimit}){caption,media_url,permalink,like_count,comments_count,media_type,timestamp,id}`;
   const facebookUrl = `${
