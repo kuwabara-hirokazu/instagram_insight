@@ -38,6 +38,9 @@ function getUserInsight(beginDate: Date, endDate: Date): Insight[] {
   return insights;
 }
 
+/**
+ * Userインサイト情報を入力する
+ */
 function insertUserInsight(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   userInsights: Insight[],
