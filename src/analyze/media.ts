@@ -32,5 +32,7 @@ function getMediaList(pageLimit: number): Media[] {
   const mediaList = response.media.data as Media[];
 
   // 日付古い順に並び替える
-  return mediaList.reverse();
+  return mediaList.sort(function (a: Media, b: Media) {
+    return new Date(a.timestamp) > new Date(b.timestamp) ? 1 : -1;
+  });
 }
