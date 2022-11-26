@@ -8,7 +8,9 @@ function analyzeMediaHourly() {
   const mediaType = isFeed ? TYPE_REEL : TYPE_FEED;
 
   const sheet = getSheet(PAGE_POST_INSIGHT_HOURLY);
+  const nowTime = formatTime(new Date());
   const data = [
+    nowTime,
     timestamp,
     latestMedia.id,
     caption,
@@ -18,7 +20,7 @@ function analyzeMediaHourly() {
     latestMedia.comments_count,
   ];
   const startRow = findLastRow(sheet, 3) + 1;
-  const START_COLUMN = 3;
+  const START_COLUMN = 2;
   // データ入力
   insert(sheet, data, startRow, START_COLUMN);
 
