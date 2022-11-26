@@ -23,6 +23,11 @@ const PAGE_POST_INSIGHT_HOURLY = "時間別Insight";
 const PAGE_USER_INSIGHT = "UserInsight";
 const PAGE_MASTER = "Triggerマスタ";
 
+// Foodジャンル
+const FOOD_TYPE_MAIN = "肉・寿司";
+const FOOD_TYPE_CAFE = "カフェ・デザート";
+const FOOD_TYPE_OTHER = "麺・その他";
+
 /**
  * トリガーに関する情報
  */
