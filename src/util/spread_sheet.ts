@@ -1,3 +1,6 @@
+/**
+ * 指定した名前に一致するシートを取得する
+ */
 function getSheet(sheetName: string): GoogleAppsScript.Spreadsheet.Sheet {
   const ssid =
     PropertiesService.getScriptProperties().getProperty("SPREAD_SHEET_ID");
@@ -13,7 +16,9 @@ function getSheet(sheetName: string): GoogleAppsScript.Spreadsheet.Sheet {
   }
 }
 
-// 行の存在に応じて追加もしくは更新を行う
+/**
+ * 行の存在に応じて追加もしくは更新を行う
+ */
 function insertOrUpdate(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   data: string[],
@@ -32,7 +37,9 @@ function insertOrUpdate(
   }
 }
 
-// 指定した位置に追加する
+/**
+ * 指定した位置に追加する
+ */
 function insert(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   data: string[],
@@ -42,7 +49,9 @@ function insert(
   sheet.getRange(startRow, startColumn, 1, data.length).setValues([data]);
 }
 
-// 日付比較を行い、データがあれば行番号を返す
+/**
+ * 日付比較を行い、データがあれば行番号を返す
+ */
 function findRow(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   targetDate: string,
@@ -63,7 +72,9 @@ function findRow(
   return 0;
 }
 
-// 指定した列の最終行番号を返す関数
+/**
+ * 指定した列の最終行番号を返す
+ */
 function findLastRow(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   targetColumn: number

@@ -1,3 +1,6 @@
+/**
+ * ユーザーの基本情報を集計してシートに入力する
+ */
 function analyzeUser() {
   const user = getUser();
 

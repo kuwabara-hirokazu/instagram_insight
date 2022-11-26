@@ -1,3 +1,6 @@
+/**
+ * ユーザーのインサイトを集計してシートに入力する
+ */
 function analyzeUserInsight() {
   const beginDate = new Date();
   // 前日の0:00にする

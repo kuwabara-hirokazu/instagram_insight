@@ -1,3 +1,6 @@
+/**
+ * 指定した数の投稿のインサイトを集計してシートに入力する
+ */
 function analyzeMediaInsights() {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 

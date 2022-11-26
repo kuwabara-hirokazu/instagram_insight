@@ -1,3 +1,6 @@
+/**
+ * 指定した数の投稿の基本情報を集計してシートに入力する
+ */
 function analyzeMedia() {
   const mediaList = getMediaList(ANALYZE_COUNT);
   const sheet = getSheet(PAGE_POST_INSIGHT);

@@ -1,3 +1,6 @@
+/**
+ * 最新投稿を集計してシートに入力する
+ */
 function analyzeMediaHourly() {
   // メディア情報(Feed/Reel)を集計
   const latestMedia = getMediaList(1)[0];
