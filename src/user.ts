@@ -1,11 +1,4 @@
-// IG利用者
-type User = {
-  id: string;
-  followers_count: string;
-  media_count: string;
-};
-
-function analyzeUserInfo() {
+function analyzeUser() {
   const user = getUser();
 
   const sheet = getSheet(PAGE_USER_INSIGHT);
@@ -25,6 +18,5 @@ function getUser(): User {
     graphApi + fields
   }&access_token=${INSTAGRAM_ACCESS_TOKEN}`;
 
-  console.log(facebookUrl);
   return executeApi(facebookUrl) as User;
 }

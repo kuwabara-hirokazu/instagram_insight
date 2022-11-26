@@ -1,13 +1,4 @@
-type Insight = {
-  name: string;
-  values: InsightValue[];
-};
-
-type InsightValue = {
-  value: string;
-};
-
-function analyzeInsights() {
+function analyzeMediaInsights() {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
   const lastRow = findLastRow(sheet, 1);
@@ -18,13 +9,16 @@ function analyzeInsights() {
     const feedId = sheet.getRange(row, 2).getValue();
     const isFeed = sheet.getRange(row, 4).getValue() == TYPE_FEED;
 
-    const insights = getInsight(feedId, isFeed);
+    const insights = getMediaInsight(feedId, isFeed);
     if (insights.length === 0) continue;
-    insertOrUpdateInsight(sheet, insights, row, START_COLUMN);
+    insertOrUpdateMediaInsight(sheet, insights, row, START_COLUMN);
   }
 }
 
-function getInsight(feedId: string, isFeed: boolean): Insight[] {
+/**
+ * ApiDoc https://developers.facebook.com/docs/instagram-api/reference/ig-media/insights
+ */
+function getMediaInsight(feedId: string, isFeed: boolean): Insight[] {
   const graphApi = GRAPH_API_PATH + feedId + "/insights";
   const param = isFeed
     ? "?metric=saved,impressions,reach"
@@ -40,7 +34,7 @@ function getInsight(feedId: string, isFeed: boolean): Insight[] {
   return insights;
 }
 
-function insertOrUpdateInsight(
+function insertOrUpdateMediaInsight(
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   insights: Insight[],
   startRow: number,
