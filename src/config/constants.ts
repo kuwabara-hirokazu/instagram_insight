@@ -9,7 +9,7 @@ const INSTAGRAM_ACCESS_TOKEN =
 
 // 投稿種類
 const TYPE_FEED = "Feed";
-const TYPE_Reel = "Reel";
+const TYPE_REEL = "Reel";
 
 /**
  * スプレッドシートに関する情報
@@ -17,4 +17,5 @@ const TYPE_Reel = "Reel";
 
 // シート名
 const PAGE_POST_INSIGHT = "投稿Insight";
+const PAGE_POST_INSIGHT_HOURLY = "時間別Insight";
 const PAGE_USER_INSIGHT = "UserInsight";

@@ -5,7 +5,7 @@ function analyzeMedia() {
     const timestamp = formatDate(new Date(media.timestamp));
     const id = media.id;
     const caption = media.caption.substring(64, 73); // 長いので適当な長さで抽出
-    const mediaType = media.media_type == "VIDEO" ? TYPE_Reel : TYPE_FEED;
+    const mediaType = media.media_type == "VIDEO" ? TYPE_REEL : TYPE_FEED;
     const permalink = media.permalink;
     const likeCount = media.like_count;
     const commentsCount = media.comments_count;
