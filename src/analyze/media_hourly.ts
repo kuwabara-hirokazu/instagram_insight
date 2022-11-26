@@ -3,7 +3,7 @@ function analyzeMediaHourly() {
   const latestMedia = getMediaList(1)[0];
 
   const timestamp = formatDateTime(new Date(latestMedia.timestamp));
-  const caption = latestMedia.caption.substring(64, 73); // 長いので適当な長さで抽出
+  const caption = latestMedia.caption.substring(68, 77); // 長いので適当な長さで抽出
   const isFeed = latestMedia.media_type != "VIDEO";
   const mediaType = isFeed ? TYPE_REEL : TYPE_FEED;
 

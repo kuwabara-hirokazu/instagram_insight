@@ -2,7 +2,7 @@ function analyzeMediaInsights() {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
   const lastRow = findLastRow(sheet, 1);
-  const startRow = lastRow - 2;
+  const startRow = lastRow - ANALYZE_COUNT;
   const START_COLUMN = 8;
 
   for (let row = startRow; row <= lastRow; row++) {
