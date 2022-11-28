@@ -14,7 +14,7 @@ function analyzeUserInsight() {
   const userInsight = getUserInsight(beginDate, endDate);
 
   const sheet = getSheet(PAGE_USER_INSIGHT);
-  const startRow = findLastRow(sheet, 1) + 1;
+  const startRow = findLastRow(sheet, 1);
   const START_COLUMN = 1;
   insertUserInsight(sheet, userInsight, startRow, START_COLUMN);
 }
@@ -51,13 +51,13 @@ function insertUserInsight(
     const insightValue = insight.values[0].value;
     switch (insight.name) {
       case "reach":
-        sheet.getRange(startRow, startColumn + 4).setValue(insightValue);
+        sheet.getRange(startRow, startColumn + 3).setValue(insightValue);
         break;
       case "impressions":
-        sheet.getRange(startRow, startColumn + 5).setValue(insightValue);
+        sheet.getRange(startRow, startColumn + 4).setValue(insightValue);
         break;
       case "profile_views":
-        sheet.getRange(startRow, startColumn + 6).setValue(insightValue);
+        sheet.getRange(startRow, startColumn + 5).setValue(insightValue);
         break;
     }
   }
