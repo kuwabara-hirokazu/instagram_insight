@@ -8,7 +8,7 @@ function analyzeMediaHourly() {
   const timestamp = formatDateTime(new Date(latestMedia.timestamp));
   const caption = latestMedia.caption.substring(68, 77); // 長いので適当な長さで抽出
   const isFeed = latestMedia.media_type != "VIDEO";
-  const mediaType = isFeed ? TYPE_REEL : TYPE_FEED;
+  const mediaType = isFeed ? TYPE_FEED : TYPE_REEL;
 
   const sheet = getSheet(PAGE_POST_INSIGHT_HOURLY);
   const nowTime = formatTime(new Date());
