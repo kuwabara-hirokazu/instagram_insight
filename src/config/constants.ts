@@ -18,6 +18,7 @@ const ANALYZE_COUNT = 20;
  */
 
 // シート名
+const PAGE_LOCATION_INFO = "マップInfo";
 const PAGE_POST_INSIGHT = "投稿Insight";
 const PAGE_POST_INSIGHT_HOURLY = "時間別Insight";
 const PAGE_USER_INSIGHT = "UserInsight";
