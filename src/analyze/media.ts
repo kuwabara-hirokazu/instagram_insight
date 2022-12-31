@@ -2,9 +2,12 @@
  * 指定した数の投稿の基本情報を集計してシートに入力する
  */
 function analyzeMedia() {
+  const ANALYZE_COUNT = 50;
   const mediaList = getMediaList(ANALYZE_COUNT);
+
   const sheet = getSheet(PAGE_POST_INSIGHT);
   const START_COLUMN = 2;
+
   for (const media of mediaList) {
     const timestamp = formatDate(new Date(media.timestamp));
     const id = media.id;

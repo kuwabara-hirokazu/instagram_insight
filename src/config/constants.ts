@@ -19,8 +19,6 @@ const FIRESTORE_INSIGHT_MEDIA_PATH = "insight/media";
 // 投稿種類
 const TYPE_FEED = "Feed";
 const TYPE_REEL = "Reel";
-// 計測する数
-const ANALYZE_COUNT = 20;
 
 /**
  * スプレッドシートに関する情報

@@ -4,14 +4,14 @@
 function analyzeMediaInsights() {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
-  const lastRow = findLastRow(sheet, 1);
-  const startRow = lastRow - ANALYZE_COUNT;
-  const START_COLUMN = 8;
-  const FOOD_TYPE_COLUMN = 12;
+  const lastRow = findLastRow(sheet, 2);
+  const startRow = 40;
+  const START_COLUMN = 11;
+  const FOOD_TYPE_COLUMN = 15;
 
   for (let row = startRow; row <= lastRow; row++) {
-    const feedId = sheet.getRange(row, 2).getValue();
-    const isFeed = sheet.getRange(row, 4).getValue() == TYPE_FEED;
+    const feedId = sheet.getRange(row, 3).getValue();
+    const isFeed = sheet.getRange(row, 6).getValue() == TYPE_FEED;
 
     const insights = getMediaInsight(feedId, isFeed);
     if (insights.length === 0) continue;
