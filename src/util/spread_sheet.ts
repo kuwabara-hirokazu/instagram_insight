@@ -112,5 +112,5 @@ function setRowHeight(
   };
   const ssid =
     PropertiesService.getScriptProperties().getProperty("SPREAD_SHEET_ID");
-  Sheets.Spreadsheets.batchUpdate({ requests: requests }, ssid);
+  Sheets.Spreadsheets?.batchUpdate({ requests: requests }, ssid);
 }
