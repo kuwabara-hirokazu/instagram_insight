@@ -11,8 +11,8 @@ function updateInsightData() {
 function getInsightSheetData(): InsightSheetData[] {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
-  const lastRow = findLastRow(sheet, 1);
-  const COLUMN_START_INDEX = 1;
+  const COLUMN_START_INDEX = 2;
+  const lastRow = findLastRow(sheet, COLUMN_START_INDEX);
   const ROW_COUNT = 1;
   const columnCount = sheet.getLastColumn();
   const dataList: InsightSheetData[] = [];
@@ -30,15 +30,17 @@ function getInsightSheetData(): InsightSheetData[] {
       timestamp: value[0],
       id: value[1],
       caption: value[2],
-      mediaType: value[3],
-      permalink: value[4],
-      likeCount: value[5],
-      commentsCount: value[6],
-      saved: value[7],
-      impression: value[8],
-      reach: value[9],
-      saveRate: value[10],
-      foodType: value[11],
+      title: value[3],
+      mediaType: value[4],
+      mediaUrl: value[5],
+      permalink: value[6],
+      likeCount: value[7],
+      commentsCount: value[8],
+      saved: value[9],
+      impression: value[10],
+      reach: value[11],
+      saveRate: value[12],
+      foodType: value[13],
     };
     dataList.push(data);
   }

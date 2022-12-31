@@ -32,7 +32,9 @@ interface InsightSheetData {
   timestamp: string;
   id: string;
   caption: string;
+  title: string;
   mediaType: string;
+  mediaUrl: string;
   permalink: string;
   likeCount: string;
   commentsCount: string;
