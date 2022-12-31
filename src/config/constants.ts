@@ -7,6 +7,15 @@ const INSTAGRAM_ID =
 const INSTAGRAM_ACCESS_TOKEN =
   PropertiesService.getScriptProperties().getProperty("INSTAGRAM_ACCESS_TOKEN");
 
+/**
+ * Firestoreに関する情報
+ */
+const FIRESTORE_ACCESS_FILE_ID =
+  PropertiesService.getScriptProperties().getProperty(
+    "FIRESTORE_ACCESS_FILE_ID"
+  );
+const FIRESTORE_INSIGHT_MEDIA_PATH = "insight/media";
+
 // 投稿種類
 const TYPE_FEED = "Feed";
 const TYPE_REEL = "Reel";

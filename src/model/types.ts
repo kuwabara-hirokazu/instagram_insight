@@ -25,3 +25,26 @@ type Insight = {
 type InsightValue = {
   value: string;
 };
+
+// インサイト集計シートのデータ
+interface InsightSheetData {
+  timestamp: string;
+  id: string;
+  caption: string;
+  mediaType: string;
+  permalink: string;
+  likeCount: string;
+  commentsCount: string;
+  saved: string;
+  impression: string;
+  reach: string;
+  saveRate: string;
+  foodType: string;
+}
+
+// Firestoreにアクセスするための情報
+type FirestoreAccessInfo = {
+  project_id: string;
+  private_key: string;
+  client_email: string;
+};
