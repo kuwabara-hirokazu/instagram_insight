@@ -11,6 +11,7 @@ type Media = {
   id: string;
   caption: string;
   media_type: string;
+  media_url: string;
   permalink: string;
   like_count: string;
   comments_count: string;

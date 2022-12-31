@@ -4,25 +4,39 @@
 function analyzeMedia() {
   const mediaList = getMediaList(ANALYZE_COUNT);
   const sheet = getSheet(PAGE_POST_INSIGHT);
+  const START_COLUMN = 2;
   for (const media of mediaList) {
     const timestamp = formatDate(new Date(media.timestamp));
     const id = media.id;
-    const caption = media.caption.substring(68, 77); // 長いので適当な長さで抽出
+    const caption = media.caption;
+    const title = media.caption.substring(68, 77); // 長いので適当な長さで抽出
     const mediaType = media.media_type == "VIDEO" ? TYPE_REEL : TYPE_FEED;
+    const mediaUrl = media.media_url;
     const permalink = media.permalink;
     const likeCount = media.like_count;
     const commentsCount = media.comments_count;
 
-    insertOrUpdate(sheet, [
-      timestamp,
-      id,
-      caption,
-      mediaType,
-      permalink,
-      likeCount,
-      commentsCount,
-    ]);
+    insertOrUpdate(
+      sheet,
+      [
+        timestamp,
+        id,
+        caption,
+        title,
+        mediaType,
+        mediaUrl,
+        permalink,
+        likeCount,
+        commentsCount,
+      ],
+      START_COLUMN,
+      START_COLUMN
+    );
   }
+
+  const ROW_HEIGHT = 21;
+  const START_ROW = 2;
+  setRowHeight(sheet, ROW_HEIGHT, START_ROW, findLastRow(sheet, START_COLUMN));
 }
 
 /**
