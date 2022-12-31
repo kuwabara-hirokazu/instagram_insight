@@ -86,3 +86,31 @@ function findLastRow(
     .getNextDataCell(SpreadsheetApp.Direction.DOWN)
     .getRow();
 }
+
+/**
+ * 行幅を固定する
+ */
+function setRowHeight(
+  sheet: GoogleAppsScript.Spreadsheet.Sheet,
+  pixelSize: number,
+  startIndex: number,
+  endIndex: number
+) {
+  // 行数が多い場合、行の高さを「データに合わせる」設定に変更されてしまい、
+  // sheet.setRowHeight()が期待通りの挙動にならないため、Google Sheets APIを使って変更する
+  const requests = {
+    updateDimensionProperties: {
+      properties: { pixelSize: pixelSize },
+      range: {
+        sheetId: sheet.getSheetId(),
+        startIndex: startIndex,
+        endIndex: endIndex,
+        dimension: "ROWS",
+      },
+      fields: "pixelSize",
+    },
+  };
+  const ssid =
+    PropertiesService.getScriptProperties().getProperty("SPREAD_SHEET_ID");
+  Sheets.Spreadsheets.batchUpdate({ requests: requests }, ssid);
+}
