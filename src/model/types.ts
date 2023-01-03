@@ -29,6 +29,7 @@ type InsightValue = {
 
 // インサイト集計シートのデータ
 interface InsightSheetData {
+  postedOrder: string;
   timestamp: string;
   id: string;
   caption: string;

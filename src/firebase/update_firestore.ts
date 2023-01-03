@@ -1,14 +1,21 @@
 /**
  * Firestoreのデータを更新する（データがなければ作成する）
+ * @param path document path
+ * @param data Object
+ * @param mask trueにすると、特定のフィールドのみを更新する。サーバー上に存在する他のフィールドは変更されない。
  */
-function updateFirestore(path: string, data: Object) {
+function updateFirestore(path: string, data: Object, mask: boolean) {
   const firestoreInfo = getFirestoreAccessInfo();
   const firestore = FirestoreApp.getFirestore(
     firestoreInfo.client_email,
     firestoreInfo.private_key,
     firestoreInfo.project_id
   );
-  firestore.updateDocument(path, data);
+  try {
+    firestore.updateDocument(path, data, mask);
+  } catch (e) {
+    console.log("APIエラー:" + e);
+  }
 }
 
 /**

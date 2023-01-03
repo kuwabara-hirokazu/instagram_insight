@@ -14,7 +14,7 @@ const FIRESTORE_ACCESS_FILE_ID =
   PropertiesService.getScriptProperties().getProperty(
     "FIRESTORE_ACCESS_FILE_ID"
   );
-const FIRESTORE_INSIGHT_MEDIA_PATH = "insight/media";
+const FIRESTORE_INSIGHT_PATH = "insight/";
 
 // 投稿種類
 const TYPE_FEED = "Feed";
