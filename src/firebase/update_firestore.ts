@@ -14,7 +14,7 @@ function updateFirestore(path: string, data: Object, mask: boolean) {
   try {
     firestore.updateDocument(path, data, mask);
   } catch (e) {
-    console.log("APIエラー:" + e);
+    console.log("Firestore更新エラー:" + e);
   }
 }
 
