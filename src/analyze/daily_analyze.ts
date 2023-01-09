@@ -24,3 +24,11 @@ function analyzeMediaWeekly() {
 function analyzeMediaInsightsWeekly() {
   analyzeMediaInsights(true);
 }
+
+/**
+ * 投稿データをFirestoreに保存する
+ * 時間がかかるので単体で実行させる
+ */
+function updateInsightDataWeekly() {
+  updateInsightData(2, true);
+}

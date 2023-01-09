@@ -1,15 +1,19 @@
 /**
  * インサイト集計シートから入力データを取得して、Firestoreのインサイトデータを更新する
  */
-function updateInsightData() {
+function updateInsightData(startIndex: number, isTheEnd: boolean) {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
   const COLUMN_START_INDEX = 1;
-  const lastRow = findLastRow(sheet, 2);
+  const lastRow = isTheEnd ? findLastRow(sheet, 2) : 120;
   const ROW_COUNT = 1;
   const columnCount = sheet.getLastColumn();
 
-  for (var rowStartIndex = 2; rowStartIndex <= lastRow; rowStartIndex++) {
+  for (
+    var rowStartIndex = startIndex;
+    rowStartIndex <= lastRow;
+    rowStartIndex++
+  ) {
     // 1行ずつデータを取得
     const value = sheet
       .getRange(rowStartIndex, COLUMN_START_INDEX, ROW_COUNT, columnCount)
@@ -40,5 +44,9 @@ function updateInsightData() {
       insight,
       true
     );
+
+    if (rowStartIndex % 10 == 0) {
+      console.log(`currentIndex: ${rowStartIndex}`);
+    }
   }
 }
