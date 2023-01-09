@@ -1,12 +1,15 @@
 /**
  * 指定した数の投稿の基本情報を集計してシートに入力する
  */
-function analyzeMedia() {
-  const ANALYZE_COUNT = 50;
-  const mediaList = getMediaList(ANALYZE_COUNT);
-
+function analyzeMedia(isAllDataAnalyze: boolean) {
   const sheet = getSheet(PAGE_POST_INSIGHT);
   const START_COLUMN = 2;
+
+  const lastRow = findLastRow(sheet, START_COLUMN);
+  const analyzeCount = isAllDataAnalyze ? lastRow : 6;
+  console.log(`analyzeCount: ${analyzeCount}`);
+
+  const mediaList = getMediaList(analyzeCount);
 
   for (const media of mediaList) {
     const timestamp = formatDate(new Date(media.timestamp));

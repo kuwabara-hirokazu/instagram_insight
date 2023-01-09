@@ -1,13 +1,14 @@
 /**
  * 指定した数の投稿のインサイトを集計してシートに入力する
  */
-function analyzeMediaInsights() {
+function analyzeMediaInsights(isAllDataAnalyze: boolean) {
   const sheet = getSheet(PAGE_POST_INSIGHT);
 
   const lastRow = findLastRow(sheet, 2);
-  const startRow = 40;
+  const startRow = isAllDataAnalyze ? 40 : lastRow - 6;
   const START_COLUMN = 11;
   const FOOD_TYPE_COLUMN = 15;
+  console.log(`analyzeCount: ${lastRow - startRow}`);
 
   for (let row = startRow; row <= lastRow; row++) {
     const feedId = sheet.getRange(row, 3).getValue();
