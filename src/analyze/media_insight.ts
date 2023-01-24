@@ -14,11 +14,16 @@ function analyzeMediaInsights(isAllDataAnalyze: boolean) {
     const feedId = sheet.getRange(row, 3).getValue();
     const isFeed = sheet.getRange(row, 6).getValue() == TYPE_FEED;
 
+    if (feedId == "") continue;
     const insights = getMediaInsight(feedId, isFeed);
     if (insights.length === 0) continue;
     insertOrUpdateMediaInsight(sheet, insights, row, START_COLUMN);
 
     if (isFeed) insertFoodType(sheet, row, FOOD_TYPE_COLUMN);
+
+    if (row % 10 == 0) {
+      console.log(`currentIndex: ${row}`);
+    }
   }
 }
 
